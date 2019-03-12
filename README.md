@@ -1,1 +1,1 @@
-# Packer recipe for the arcade version of the Nomad image
+# Packer image containing Nomad and Consul ready to be clustered.
