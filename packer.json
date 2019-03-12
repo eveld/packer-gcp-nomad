@@ -1,0 +1,31 @@
+{
+  "variables": {
+    "project_id": ""
+  },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "project_id": "{{user `project_id`}}",
+      "source_image_family": "ubuntu-1810",
+      "zone": "europe-west1-b",
+      "ssh_username" : "root",
+      "image_name": "nomad-087",
+      "image_labels": {
+        "track": "nomad",
+        "created": "{{ timestamp }}"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "destination": "/tmp/resources",
+      "source": "resources",
+      "type": "file"
+    },
+    {
+      "type": "shell",
+      "script": "bootstrap.sh"
+    }
+  ]
+
+}
