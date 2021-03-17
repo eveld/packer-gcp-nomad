@@ -32,9 +32,10 @@ apt-get update && apt-get install -y docker-ce
 # Install Nomad
 curl -fsSL -o /tmp/nomad.zip https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip
 unzip -o -d /usr/local/bin/ /tmp/nomad.zip
+mkdir -p /etc/nomad.d/
 
 # Improve the startup sequence
-cp /tmp/resources/google-startup-scripts.service /etc/systemd/system/multi-user.target.wants/google-startup-scripts.service
+# cp /tmp/resources/google-startup-scripts.service /etc/systemd/system/multi-user.target.wants/google-startup-scripts.service
 cp /tmp/resources/nomad.service /etc/systemd/system/nomad.service
 
 systemctl daemon-reload
